@@ -1,6 +1,9 @@
 # Генератор форм на Typescript
 
 [![hexlet-check](https://github.com/IIIMAXIMIII/react-urfu-project-81/actions/workflows/hexlet-check.yml/badge.svg)](https://github.com/IIIMAXIMIII/react-urfu-project-81/actions)
+[![Test and Lint](https://github.com/IIIMAXIMIII/react-urfu-project-81/actions/workflows/typescript.yml/badge.svg)](https://github.com/IIIMAXIMIII/react-urfu-project-81/actions/workflows/typescript.yml)
+[![Quality Gate Status](https://sonarcloud.io/api/project_badges/measure?project=IIIMAXIMIII_react-urfu-project-81&metric=alert_status)](https://sonarcloud.io/summary/new_code?id=IIIMAXIMIII_react-urfu-project-81)
+[![Coverage](https://sonarcloud.io/api/project_badges/measure?project=IIIMAXIMIII_react-urfu-project-81&metric=coverage)](https://sonarcloud.io/summary/new_code?id=IIIMAXIMIII_react-urfu-project-81)
 
 Библиотека, с помощью которой удобно создавать формы в шаблонах сайтов. Она заметно сокращает код описания формы за счет автоматической обработки ошибок и различных контролов.
 
