@@ -29,14 +29,6 @@ jobs:
         # https://github.com/actions/checkout
       - uses: actions/checkout@v7
 
-      - name: Cache npm dependencies
-        uses: actions/cache@v3
-        with:
-          path: ~/.npm
-          key: ${{ runner.os }}-npm-${{ hashFiles('package-lock.json') }}
-          restore-keys: |
-            ${{ runner.os }}-npm-
-
       - name: Use Node.js ${{ matrix.node-version }}
         # Configures the node version used on GitHub-hosted runners
         # https://github.com/actions/setup-node
@@ -44,6 +36,7 @@ jobs:
         # The Node.js version to configure
         with:
           node-version: ${{ matrix.node-version }}
+          package-manager-cache: false
       - run: make install
       - run: make lint
         # oxlint не смотрит типы, поэтому type-aware правила заменены прогоном tsc
