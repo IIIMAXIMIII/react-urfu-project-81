@@ -47,55 +47,86 @@ cd react-urfu-project-81
 import HexletCode from '@hexlet/code';
 
 const template = { name: 'rob', job: 'hexlet', gender: 'm' };
-const form = HexletCode.formFor(template, { method: 'post' }, (f) => {
-  f.input('name');
-  f.input('job', { as: 'textarea' });
+```
+
+```
+const form = HexletCode.formFor(template, { method: "post" }, (f) => {
+    f.input("name");
+    f.input("job", { as: "textarea" });
 });
 
 console.log(form);
 
-//  <form action="#" method="post">
-//      <input name="name" type="text" value="rob">
-//      <textarea cols="20" rows="40" name="job">hexlet</textarea>
-//  </form>
+<form action="#" method="post">
+    <label for="name">Name</label>
+    <input name="name" type="text" value="rob">
+    <label for="job">Job</label>
+    <textarea cols="20" rows="40" name="job">hexlet</textarea>
+</form>
 ```
 
 ```
 const form = HexletCode.formFor(template, {}, (f) => {
-  f.input('name', {class: 'user-input'});
-  f.input('job');
+    f.input("name", { class: "user-input" });
+    f.input("job");
 });
 
-// <form action="#" method="post">
-//   <input name="name" type="text" value="rob" class="user-input">
-//   <input name="job" type="text" value="hexlet">
-// </form>
+<form action="#" method="post">
+    <label for="name">Name</label>
+    <input name="name" type="text" value="rob" class="user-input">
+    <label for="job">Job</label>
+    <input name="job" type="text" value="hexlet">
+</form>
 ```
 
 ```
-const form = HexletCode.formFor(template, {}, (f) =>
-  f.input('job', { as: 'textarea' }));
+const form = HexletCode.formFor(template, {}, (f) => f.input("job", { as: "textarea" }));
 
-// <form action="#" method="post">
-//   <textarea cols="20" rows="40" name="job">hexlet</textarea>
-// </form>
+<form action="#" method="post">
+  <label for="job">Job</label>
+  <textarea cols="20" rows="40" name="job">hexlet</textarea>
+</form>
 ```
 
 ```
-const form = HexletCode.formFor(template, { url: '#' }, (f) =>
-  f.input('job', { as: 'textarea', rows: 50, cols: 50}));
+const form = HexletCode.formFor(template, { url: "#" }, (f) =>
+    f.input("job", { as: "textarea", rows: 50, cols: 50 }),
+);
 
-// <form action="#" method="post">
-//   <textarea cols="50" rows="50" name="job">hexlet</textarea>
-// </form>
+<form action="#" method="post">
+  <label for="job">Job</label>
+  <textarea cols="50" rows="50" name="job">hexlet</textarea>
+</form>
 ```
 
 ```
-const form = HexletCode.formFor(template, { url: '/users' }, (f) => {
-  f.input('name');
-  f.input('job', { as: 'textarea' });
-  f.input('age');
+const form = HexletCode.formFor(template, { method: "post" }, (f) => {
+    f.input("name");
+    f.input("job", { as: "textarea" });
+    f.submit();
 });
 
-// Error: Field 'age' does not exist in the template. 
+<form action="#" method="post">
+    <label for="name">Name</label>
+    <input name="name" type="text" value="rob">
+    <label for="job">Job</label>
+    <textarea cols="20" rows="40" name="job">hexlet</textarea>
+    <input type="submit" value="Save">
+</form>
+```
+
+```
+const form = HexletCode.formFor(template, { method: "post" }, (f) => {
+    f.input("name");
+    f.input("job", { as: "textarea" });
+    f.submit("Wow");
+});
+
+<form action="#" method="post">
+    <label for="name">Name</label>
+    <input name="name" type="text" value="rob">
+    <label for="job">Job</label>
+    <textarea cols="20" rows="40" name="job">hexlet</textarea>
+    <input type="submit" value="Wow">
+</form>
 ```

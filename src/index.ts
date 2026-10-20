@@ -1,2 +1,6 @@
+import { formFor } from "./formFor";
+
 export { Tag } from "./Tag";
-export { formFor } from "./formFor";
+export { formFor };
+
+export default { formFor };

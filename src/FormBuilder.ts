@@ -1,3 +1,4 @@
+import { capitalize } from "es-toolkit";
 import { Tag } from "./Tag";
 
 type InputOptions = {
@@ -20,6 +21,9 @@ export class FormBuilder {
     if (val === undefined) {
       throw new Error(`Field '${name}' does not exist in the template.`);
     }
+
+    this.tags.push(new Tag("label", { for: name }, capitalize(name)));
+
     const { as, cols, rows, ...rest } = mod ?? {};
     const isTextarea = as === "textarea";
     const tagName = isTextarea ? "textarea" : "input";
@@ -45,6 +49,10 @@ export class FormBuilder {
       const tag = new Tag(tagName, attrs);
       this.tags.push(tag);
     }
+  }
+
+  public submit(name: string = "Save") {
+    this.tags.push(new Tag("input", { type: "submit", value: name }));
   }
 
   public toString() {
