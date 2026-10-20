@@ -10,7 +10,7 @@ export function formFor(
   callback(formBuilder);
   const tag = new Tag(
     "form",
-    { action: attr.url ?? "#", method: attr.method ?? "post" },
+    { method: attr.method ?? "post", action: attr.url ?? "#" },
     formBuilder.toString(),
   );
 

@@ -5,6 +5,8 @@ type InputOptions = {
   as?: "input" | "textarea";
   cols?: number;
   rows?: number;
+  label?: string;
+  labelHtml?: Record<string, unknown>;
   [key: string]: unknown;
 };
 
@@ -22,9 +24,10 @@ export class FormBuilder {
       throw new Error(`Field '${name}' does not exist in the template.`);
     }
 
-    this.tags.push(new Tag("label", { for: name }, capitalize(name)));
+    const { as, cols, rows, label, labelHtml, ...rest } = mod ?? {};
 
-    const { as, cols, rows, ...rest } = mod ?? {};
+    this.tags.push(new Tag("label", { for: name, ...labelHtml }, capitalize(label ?? name)));
+
     const isTextarea = as === "textarea";
     const tagName = isTextarea ? "textarea" : "input";
 

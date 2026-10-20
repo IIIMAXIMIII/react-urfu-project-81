@@ -11,13 +11,13 @@ const readFixture = (name: string): string =>
 test("empty form", () => {
   const template = { name: "rob", job: "hexlet", gender: "m" };
   const form = HexletCode.formFor(template, {}, (_f) => {});
-  expect(form).toBe('<form action="#" method="post"></form>');
+  expect(form).toBe('<form method="post" action="#"></form>');
 });
 
 test("empty form with url", () => {
   const template = { name: "rob", job: "hexlet", gender: "m" };
   const form = HexletCode.formFor(template, { url: "/users" }, (_f) => {});
-  expect(form).toBe('<form action="/users" method="post"></form>');
+  expect(form).toBe('<form method="post" action="/users"></form>');
 });
 
 test("form with inputs", () => {
@@ -81,4 +81,19 @@ test("form with custom submit", () => {
     f.submit("Wow");
   });
   expect(form).toBe(readFixture("form-with-custom-submit.html"));
+});
+
+test("label HTML", () => {
+  const template = { name: "rob", job: "hexlet", gender: "m" };
+  const form = HexletCode.formFor(template, { method: "post" }, (f) => {
+    f.input("name", {
+      label: "User",
+      labelHtml: {
+        class: "form-label",
+        id: "name-label",
+      },
+    });
+    f.submit("Ok");
+  });
+  expect(form).toBe(readFixture("label-HTML.html"));
 });
