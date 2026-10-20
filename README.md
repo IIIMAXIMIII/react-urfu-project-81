@@ -40,3 +40,62 @@ cd react-urfu-project-81
 ## О Хекслете
 
 [Хекслет](https://ru.hexlet.io/) — школа программирования: авторские программы обучения с практикой, поддержкой наставников и реальными проектами, которые остаются в резюме. Этот репозиторий — один из таких проектов.
+
+### Примеры использования
+
+```
+import HexletCode from '@hexlet/code';
+
+const template = { name: 'rob', job: 'hexlet', gender: 'm' };
+const form = HexletCode.formFor(template, { method: 'post' }, (f) => {
+  f.input('name');
+  f.input('job', { as: 'textarea' });
+});
+
+console.log(form);
+
+//  <form action="#" method="post">
+//      <input name="name" type="text" value="rob">
+//      <textarea cols="20" rows="40" name="job">hexlet</textarea>
+//  </form>
+```
+
+```
+const form = HexletCode.formFor(template, {}, (f) => {
+  f.input('name', {class: 'user-input'});
+  f.input('job');
+});
+
+// <form action="#" method="post">
+//   <input name="name" type="text" value="rob" class="user-input">
+//   <input name="job" type="text" value="hexlet">
+// </form>
+```
+
+```
+const form = HexletCode.formFor(template, {}, (f) =>
+  f.input('job', { as: 'textarea' }));
+
+// <form action="#" method="post">
+//   <textarea cols="20" rows="40" name="job">hexlet</textarea>
+// </form>
+```
+
+```
+const form = HexletCode.formFor(template, { url: '#' }, (f) =>
+  f.input('job', { as: 'textarea', rows: 50, cols: 50}));
+
+// <form action="#" method="post">
+//   <textarea cols="50" rows="50" name="job">hexlet</textarea>
+// </form>
+```
+
+```
+const form = HexletCode.formFor(template, { url: '/users' }, (f) => {
+  f.input('name');
+  f.input('job', { as: 'textarea' });
+  f.input('age');
+});
+
+// Error: Field 'age' does not exist in the template. 
+```

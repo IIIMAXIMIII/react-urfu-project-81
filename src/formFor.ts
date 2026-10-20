@@ -3,10 +3,16 @@ import { FormBuilder } from "./FormBuilder";
 
 export function formFor(
   template: object,
-  attr: { url?: string },
-  _callback: (f: FormBuilder) => void,
+  attr: { url?: string; method?: string },
+  callback: (f: FormBuilder) => void,
 ): string {
-  const tag = new Tag("form", { action: attr.url ?? "#", method: "post" });
+  const formBuilder = new FormBuilder(template);
+  callback(formBuilder);
+  const tag = new Tag(
+    "form",
+    { action: attr.url ?? "#", method: attr.method ?? "post" },
+    formBuilder.toString(),
+  );
 
   return tag.toString();
 }
